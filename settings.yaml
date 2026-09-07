@@ -1,4 +1,11 @@
 name: demo
+ai_config:
+  providers:
+    openai:
+      models:
+        - 5CD-AI/Vintern-3B-R-beta
+      resource_path: f/information_extraction/qwen
+      web_search_enabled: true
 error_handler: null
 git_sync:
   repositories:

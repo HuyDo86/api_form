@@ -1,11 +1,10 @@
 name: demo
 ai_config:
   providers:
-    openai:
+    deepseek:
       models:
-        - 5CD-AI/Vintern-3B-R-beta
-      resource_path: f/information_extraction/qwen
-      web_search_enabled: true
+        - deepseek/deepseek-chat
+      resource_path: f/information_extraction/deepseek
 error_handler: null
 git_sync:
   repositories:

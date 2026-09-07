@@ -1,0 +1,55 @@
+summary: ''
+description: ''
+lock: '!inline f/information_extraction/create_prompt.script.lock'
+kind: script
+schema:
+  $schema: https://json-schema.org/draft/2020-12/schema
+  type: object
+  properties:
+    constraints:
+      type: string
+      description: ''
+      default: null
+      originalType: string
+    context:
+      type: string
+      description: ''
+      default: null
+      originalType: string
+    folder_name:
+      type: string
+      description: ''
+      default: null
+      originalType: string
+    goal:
+      type: string
+      description: ''
+      default: null
+      originalType: string
+    instruction:
+      type: string
+      description: ''
+      default: null
+      originalType: string
+    output:
+      type: string
+      description: ''
+      default: null
+      originalType: string
+    prompt_name:
+      type: string
+      description: ''
+      default: null
+      originalType: string
+    role:
+      type: string
+      description: ''
+      default: null
+      originalType: string
+    save_to_file:
+      type: boolean
+      description: ''
+      default: false
+  required:
+    - folder_name
+    - prompt_name

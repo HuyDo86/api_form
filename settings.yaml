@@ -1,0 +1,18 @@
+name: demo
+error_handler: null
+git_sync:
+  repositories: []
+operator_settings:
+  assets: true
+  audit_logs: true
+  folders: true
+  groups: true
+  resources: true
+  runs: true
+  schedules: true
+  triggers: true
+  variables: true
+  workers: true
+slack_oauth_client_id: null
+slack_oauth_client_secret: null
+success_handler: null

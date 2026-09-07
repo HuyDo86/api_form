@@ -1,0 +1,8 @@
+description: model gemini-12B
+value:
+  api_key: '22332535'
+  base_url: https://generativelanguage.googleapis.com/v1beta/openai
+  model: gemini -12B
+  provider: gemini
+labels: []
+resource_type: c_gemini

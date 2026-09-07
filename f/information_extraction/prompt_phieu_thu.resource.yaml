@@ -1,0 +1,186 @@
+description: ''
+value:
+  content: >-
+    You are an expert in accounting, finance, and inventory management for
+    construction businesses in Vietnam.
+
+
+    Extract the following fields from the receipt voucher text in JSON format:
+        - "amount": Line item amount / individual amount (Số tiền từng mục hoặc số tiền gốc nếu có, number/float or string or null)
+        - "attach": Attached documents / Kèm theo (e.g. "01 chứng từ gốc", "Hóa đơn HD123")
+        - "book number": Book number / Quyển số / Số quyển của sổ kế toán
+        - "charges effective from": Charges effective date or period / Tính từ ngày / Thời gian bắt đầu tính phí
+        - "Đã nhận đủ số tiền": Received full amount statement / Đã nhận đủ số tiền (bằng chữ hoặc bằng số)
+        - "date": Voucher date / Ngày tháng năm lập phiếu thu (Format: YYYY-MM-DD or YYYY-MM-DD HH:MM:SS)
+        - "declarant_name": Declarant / Payer full name / Họ và tên người nộp tiền / Người kê khai
+        - "denominator": Form template number / Mẫu số hóa đơn/chứng từ (Mẫu số)
+        - "email": Email address of payer or unit / Email liên hệ
+        - "entity, individual business household": Organization, company, individual or business household / Đơn vị / Tên công ty / Cá nhân / Hộ kinh doanh nộp hoặc nhận tiền
+        - "have": Credit accounting account / Tài khoản Có (e.g. "111", "131", "511",...)
+        - "id, SDSN unit code, QHNS code": ID, SDSN unit code, or QHNS code / Mã số đơn vị SDNS / Mã QHNS / Mã số quản lý
+        - "in debt": Debit accounting account / Tài khoản Nợ (e.g. "1111", "112",...)
+        - "items": List of detailed line items if present (Danh sách các mặt hàng / khoản thu chi tiết, array of objects containing item name, quantity, unit price, total amount; or [] if empty)
+        - "number of votes": Voucher number / Số phiếu thu (Số / Số phiếu, e.g. "PT001", "01/PT")
+        - "original documents": Original supporting documents / Chứng từ gốc đính kèm
+        - "other accounting documents": Other accounting documents / Chứng từ kế toán khác có liên quan
+        - "Reason for collection": Reason for receipt / Lý do thu / Nội dung thu tiền
+        - "serial number": Serial number / Ký hiệu mẫu / Serial của chứng từ hoặc hóa đơn đính kèm (e.g. "AA/24E")
+        - "sign": List of signatures / signatories on the voucher / Danh sách các vị trí/bên ký tên (e.g. ["Giám đốc", "Kế toán trưởng", "Người nộp tiền", "Người lập phiếu", "Thủ quỹ"])
+        - "Số tiền quy đổi": Converted amount in VND / Số tiền quy đổi ra VND nếu giao dịch ngoại tệ (number/float or string or null)
+        - "Tax identification number": Tax identification number (TIN / MST) / Mã số thuế của đơn vị/cá nhân
+        - "taxpayer_address": Address of payer or taxpayer / Địa chỉ người nộp tiền hoặc đơn vị
+        - "telephone, fax, hotline": Phone number, fax, or hotline / Số điện thoại, fax, hotline liên hệ
+        - "total_amount_in_words": Total amount written in words / Viết bằng chữ / Tổng số tiền bằng chữ
+        - "total_amount/ grand_total": Grand total amount received / Tổng cộng số tiền thu (number/float or null, in VND)
+        - "Tỷ giá ngoại tệ": Foreign currency exchange rate / Tỷ giá ngoại tệ (number/float or string or null)
+        - "unit of measurement": Unit of currency or measurement / Đơn vị tính / Đơn vị tiền tệ (e.g. "VND", "USD")
+        - "VAT": VAT percentage / Thuế suất GTGT (%) (number/float or string or null)
+        - "VAT Amount": VAT amount / Số tiền thuế GTGT (number/float or string or null)
+
+    **SPECIAL HANDLING RULES**:
+
+    1. BLURRY / LOW-QUALITY TEXT: Infer missing or blurry words/digits based on
+    accounting logic, context, and standard Vietnamese money notation. Do not
+    guess randomly; if a field cannot be identified, return null.
+
+    2. LARGE / DETAILED DOCUMENTS: Read through the entire OCR text from start
+    to finish, ensuring no details from footers, notes, or annexes are missed.
+
+    3. MULTIPLE DOCUMENTS IN ONE IMAGE:
+       - If the OCR text contains multiple receipt vouchers supporting each other, MERGE their information and calculate total amount.
+       - If the OCR text contains multiple different document types, IGNORE irrelevant document types and extract ONLY the fields belonging to receipt vouchers (Phiếu thu).
+
+    Example input: "Phiếu thu số PT001 ngày 15/10/2023. Họ tên người nộp: Tuấn
+    Lộc. Lý do thu: Thu hoàn ứng nhân viên Tuấn Lộc theo hóa đơn HD29193. Số
+    tiền: 20.000.000 VND (Viết bằng chữ: Hai mươi triệu đồng tròn). Đã nhận đủ
+    số tiền 20.000.000 đồng kèm theo 01 chứng từ gốc."
+
+
+    Example output JSON:
+
+    {
+      "amount": 20000000.0,
+      "attach": "01 chứng từ gốc, Hóa đơn HD29193",
+      "book number": null,
+      "charges effective from": null,
+      "Đã nhận đủ số tiền": "20.000.000 đồng",
+      "date": "2023-10-15",
+      "declarant_name": "Tuấn Lộc",
+      "denominator": null,
+      "email": null,
+      "entity, individual business household": null,
+      "have": null,
+      "id, SDSN unit code, QHNS code": null,
+      "in debt": null,
+      "items": [],
+      "number of votes": "PT001",
+      "original documents": "01 chứng từ gốc",
+      "other accounting documents": null,
+      "Reason for collection": "Thu hoàn ứng nhân viên Tuấn Lộc theo hóa đơn HD29193",
+      "serial number": null,
+      "sign": [],
+      "Số tiền quy đổi": null,
+      "Tax identification number": null,
+      "taxpayer_address": null,
+      "telephone, fax, hotline": null,
+      "total_amount_in_words": "Hai mươi triệu đồng tròn",
+      "total_amount/ grand_total": 20000000.0,
+      "Tỷ giá ngoại tệ": null,
+      "unit of measurement": "VND",
+      "VAT": null,
+      "VAT Amount": null
+    }
+
+
+    Extract the fields in JSON format. Use null for any field that cannot be
+    found.
+
+
+    Current date and time: {date_time}
+
+
+    Input text:
+
+    ----------------
+
+    {ocr_text}
+
+    ----------------
+
+
+    IMPORTANT: Respond with ONLY a valid JSON object matching this exact
+    structure, no markdown code fences, no explanation text before or after:
+
+    {"amount": null, "attach": null, "book number": null, "charges effective
+    from": null, "Đã nhận đủ số tiền": null, "date": null, "declarant_name":
+    null, "denominator": null, "email": null, "entity, individual business
+    household": null, "have": null, "id, SDSN unit code, QHNS code": null, "in
+    debt": null, "items": [], "number of votes": null, "original documents":
+    null, "other accounting documents": null, "Reason for collection": null,
+    "serial number": null, "sign": [], "Số tiền quy đổi": null, "Tax
+    identification number": null, "taxpayer_address": null, "telephone, fax,
+    hotline": null, "total_amount_in_words": null, "total_amount/ grand_total":
+    null, "Tỷ giá ngoại tệ": null, "unit of measurement": null, "VAT": null,
+    "VAT Amount": null}
+
+
+    Your Response:
+  Constraints: >-
+    - BLURRY / LOW-QUALITY TEXT: Infer missing or blurry words/digits based on
+    accounting logic, context, and standard Vietnamese document notation. If a
+    field cannot be identified with reasonable confidence, return null (or []
+    for items/sign).
+
+    - NUMERIC CONVERSION: Normalize monetary amounts (`total_amount/
+    grand_total`, `amount`, `Số tiền quy đổi`, `VAT Amount`) to numeric values
+    in VND where possible.
+
+    - MULTIPLE DOCUMENTS IN ONE IMAGE: Extract the receipt voucher details and
+    reference the related document codes in "attach" or "other accounting
+    documents".
+
+    - Respond with ONLY a valid JSON object. Do NOT add explanation text, code
+    block fences, or markdown formatting.
+  Context: |-
+    Document type: Phiếu thu
+    Language: Vietnamese
+  Goal: Extract the receipt voucher (Phiếu thu) fields from the input document
+    into a JSON object matching the exact keys below.
+  Instruction: >-
+    - Extract the following fields from the input document:
+        - "amount": Line item amount / individual amount (Số tiền từng mục hoặc số tiền gốc nếu có, number/float or string or null)
+        - "attach": Attached documents / Kèm theo (e.g. "01 chứng từ gốc", "Hóa đơn HD123")
+        - "book number": Book number / Quyển số / Số quyển của sổ kế toán
+        - "charges effective from": Charges effective date or period / Tính từ ngày / Thời gian bắt đầu tính phí
+        - "Đã nhận đủ số tiền": Received full amount statement / Đã nhận đủ số tiền (bằng chữ hoặc bằng số)
+        - "date": Voucher date / Ngày tháng năm lập phiếu thu (Format: YYYY-MM-DD or YYYY-MM-DD HH:MM:SS)
+        - "declarant_name": Declarant / Payer full name / Họ và tên người nộp tiền / Người kê khai
+        - "denominator": Form template number / Mẫu số hóa đơn/chứng từ (Mẫu số)
+        - "email": Email address of payer or unit / Email liên hệ
+        - "entity, individual business household": Organization, company, individual or business household / Đơn vị / Tên công ty / Cá nhân / Hộ kinh doanh nộp hoặc nhận tiền
+        - "have": Credit accounting account / Tài khoản Có (e.g. "111", "131", "511",...)
+        - "id, SDSN unit code, QHNS code": ID, SDSN unit code, or QHNS code / Mã số đơn vị SDNS / Mã QHNS / Mã số quản lý
+        - "in debt": Debit accounting account / Tài khoản Nợ (e.g. "1111", "112",...)
+        - "items": List of detailed line items if present (Danh sách các mặt hàng / khoản thu chi tiết, array of objects containing item name, quantity, unit price, total amount; or [] if empty)
+        - "number of votes": Voucher number / Số phiếu thu (Số / Số phiếu, e.g. "PT001", "01/PT")
+        - "original documents": Original supporting documents / Chứng từ gốc đính kèm
+        - "other accounting documents": Other accounting documents / Chứng từ kế toán khác có liên quan
+        - "Reason for collection": Reason for receipt / Lý do thu / Nội dung thu tiền
+        - "serial number": Serial number / Ký hiệu mẫu / Serial của chứng từ hoặc hóa đơn đính kèm (e.g. "AA/24E")
+        - "sign": List of signatures / signatories on the voucher / Danh sách các vị trí/bên ký tên (e.g. ["Giám đốc", "Kế toán trưởng", "Người nộp tiền", "Người lập phiếu", "Thủ quỹ"])
+        - "Số tiền quy đổi": Converted amount in VND / Số tiền quy đổi ra VND nếu giao dịch ngoại tệ (number/float or string or null)
+        - "Tax identification number": Tax identification number (TIN / MST) / Mã số thuế của đơn vị/cá nhân
+        - "taxpayer_address": Address of payer or taxpayer / Địa chỉ người nộp tiền hoặc đơn vị
+        - "telephone, fax, hotline": Phone number, fax, or hotline / Số điện thoại, fax, hotline liên hệ
+        - "total_amount_in_words": Total amount written in words / Viết bằng chữ / Tổng số tiền bằng chữ
+        - "total_amount/ grand_total": Grand total amount received / Tổng cộng số tiền thu (number/float or null, in VND)
+        - "Tỷ giá ngoại tệ": Foreign currency exchange rate / Tỷ giá ngoại tệ (number/float or string or null)
+        - "unit of measurement": Unit of currency or measurement / Đơn vị tính / Đơn vị tiền tệ (e.g. "VND", "USD")
+        - "VAT": VAT percentage / Thuế suất GTGT (%) (number/float or string or null)
+        - "VAT Amount": VAT amount / Số tiền thuế GTGT (number/float or null)
+  Output: >2-
+     Return only valid JSON matching the exact structure below:
+        {"amount": null, "attach": null, "book number": null, "charges effective from": null, "Đã nhận đủ số tiền": null, "date": null, "declarant_name": null, "denominator": null, "email": null, "entity, individual business household": null, "have": null, "id, SDSN unit code, QHNS code": null, "in debt": null, "items": [], "number of votes": null, "original documents": null, "other accounting documents": null, "Reason for collection": null, "serial number": null, "sign": [], "Số tiền quy đổi": null, "Tax identification number": null, "taxpayer_address": null, "telephone, fax, hotline": null, "total_amount_in_words": null, "total_amount/ grand_total": null, "Tỷ giá ngoại tệ": null, "unit of measurement": null, "VAT": null, "VAT Amount": null}
+  Role: You are an expert in accounting, finance, and document processing for
+    businesses in Vietnam.
+resource_type: c_my_prompt

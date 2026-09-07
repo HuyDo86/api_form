@@ -1,0 +1,50 @@
+summary: ''
+description: ''
+lock: '!inline f/information_extraction/create_model.script.lock'
+kind: script
+schema:
+  $schema: https://json-schema.org/draft/2020-12/schema
+  type: object
+  properties:
+    api_key:
+      type: string
+      description: ''
+      default: null
+      originalType: string
+    base_url:
+      type: string
+      description: ''
+      default: ''
+      originalType: string
+    folder_name:
+      type: string
+      description: ''
+      default: null
+      originalType: string
+    model:
+      type: string
+      description: ''
+      default: null
+      originalType: string
+    model_name:
+      type: string
+      description: ''
+      default: null
+      originalType: string
+    provider:
+      type: string
+      description: ''
+      default: null
+      enum:
+        - openai
+        - anthropic
+        - google
+        - meta
+        - alibaba
+      originalType: enum
+  required:
+    - folder_name
+    - model_name
+    - provider
+    - model
+    - api_key

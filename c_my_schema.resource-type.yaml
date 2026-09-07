@@ -1,0 +1,305 @@
+description: ''
+format_extension: null
+is_fileset: false
+schema:
+  type: object
+  order:
+    - date
+    - serial number
+    - denominator
+    - number of votes
+    - in debt
+    - have
+    - book number
+    - entity, individual business household
+    - telephone, fax, hotline
+    - email
+    - Tax identification number
+    - id, SDSN unit code, QHNS code
+    - unit of measurement
+    - items
+    - Reason for collection
+    - charges effective from
+    - declarant_name
+    - taxpayer_address
+    - total_amount/ grand_total
+    - total_amount_in_words
+    - attach
+    - other accounting documents
+    - original documents
+    - VAT
+    - VAT Amount
+    - amount
+    - sign
+    - Đã nhận đủ số tiền
+    - Tỷ giá ngoại tệ
+    - Số tiền quy đổi
+  properties:
+    amount:
+      type:
+        - string
+        - 'null'
+      description: Cộng
+    attach:
+      type:
+        - string
+        - 'null'
+      description: Kèm theo
+    book number:
+      type:
+        - string
+        - 'null'
+      description: Quyển số
+    charges effective from:
+      type:
+        - string
+        - 'null'
+      description: Cước phí từ ngày (from)
+    Đã nhận đủ số tiền:
+      type:
+        - string
+        - 'null'
+      description: Đã nhận đủ số tiền (viết bằng chữ)
+    date:
+      type:
+        - string
+        - 'null'
+      description: Ngày, tháng, năm
+      default: ''
+    declarant_name:
+      type:
+        - string
+        - 'null'
+      description: Họ tên người nộp tiền
+    denominator:
+      type:
+        - string
+        - 'null'
+      description: Mẫu số
+    email:
+      type:
+        - string
+        - 'null'
+      description: Email
+    entity, individual business household:
+      type:
+        - string
+        - 'null'
+      description: Đơn vị, hộ cá nhân kinh doanh
+    have:
+      type:
+        - string
+        - 'null'
+      description: Có
+    id, SDSN unit code, QHNS code:
+      type:
+        - string
+        - 'null'
+      description: Mã khách hàng (ID), mã đơn vị SDSN, mã QHNS
+    in debt:
+      type:
+        - string
+        - 'null'
+      description: Nợ
+    items:
+      type: array
+      items:
+        type: object
+        properties:
+          generic:
+            type:
+              - number
+              - 'null'
+            description: Chủng loại
+          Items:
+            type:
+              - string
+              - 'null'
+            description: Khoản (Items)
+          note:
+            type:
+              - string
+              - 'null'
+            description: Ghi chú
+          quantity:
+            type:
+              - string
+              - 'null'
+            description: Số lượng (Sluong)
+          stt:
+            type:
+              - integer
+              - 'null'
+            description: Số thứ tự các khoản thu
+          Total prices:
+            type:
+              - string
+              - 'null'
+            description: Thành tiền
+          unit price:
+            type:
+              - string
+              - 'null'
+            description: Đơn giá
+        required:
+          - stt
+          - generic
+          - quantity
+          - unit price
+          - Total prices
+          - note
+          - Items
+    number of votes:
+      type:
+        - string
+        - 'null'
+      description: Số phiếu
+    original documents:
+      type:
+        - string
+        - 'null'
+      description: Chứng từ gốc
+    other accounting documents:
+      type:
+        - string
+        - 'null'
+      description: Chứng từ kế toán khác
+    Reason for collection:
+      type:
+        - number
+        - 'null'
+      description: Lý do thu
+    serial number:
+      type:
+        - string
+        - 'null'
+      description: Liên số
+    sign:
+      type: array
+      items:
+        type: object
+        properties:
+          casher:
+            type:
+              - string
+              - 'null'
+            description: Thủy quỹ
+          Chef accountant:
+            type:
+              - number
+              - 'null'
+            description: Kế toán trưởng
+          director:
+            type:
+              - integer
+              - 'null'
+            description: Giám đốc, thủ trưởng đơn vị
+          facility owner:
+            type:
+              - string
+              - 'null'
+            description: Chủ cơ sở
+          payer:
+            type:
+              - string
+              - 'null'
+            description: Người nộp tiền, người đại diện hộ kinh doanh/ cá nhân kinh doanh
+          prepared by:
+            type:
+              - string
+              - 'null'
+            description: Người lập phiếu
+          recipient:
+            type:
+              - string
+              - 'null'
+            description: Người nhận tiền
+        required:
+          - director
+          - Chef accountant
+          - casher
+          - prepared by
+          - payer
+          - resipient
+          - facility owner
+    Số tiền quy đổi:
+      type:
+        - string
+        - 'null'
+      description: Số tiền quy đổi
+    Tax identification number:
+      type:
+        - string
+        - 'null'
+      description: Mã số thuế (MST)
+    taxpayer_address:
+      type:
+        - string
+        - 'null'
+      description: Địa chỉ người nộp tiền
+    telephone, fax, hotline:
+      type:
+        - string
+        - 'null'
+      description: Điện thoại, fax, hotline
+    total_amount_in_words:
+      type:
+        - string
+        - 'null'
+      description: Tổng số tiền bằng chữ
+    total_amount/ grand_total:
+      type:
+        - string
+        - 'null'
+      description: Số tiền/ Tổng cộng
+    Tỷ giá ngoại tệ:
+      type:
+        - string
+        - 'null'
+      description: Tỷ giá ngoại tệ (vàng tiền tệ)
+    unit of measurement:
+      type:
+        - string
+        - 'null'
+      description: Đơn vị tính
+    VAT:
+      type:
+        - string
+        - 'null'
+      description: Thuế suất GTGT
+    VAT Amount:
+      type:
+        - string
+        - 'null'
+      description: Tiền thuế GTGT
+  required:
+    - date
+    - serial number
+    - denominator
+    - number of votes
+    - in debt
+    - have
+    - book number
+    - entity, individual business household
+    - telephone, fax, hotline
+    - email
+    - Tax identification number
+    - id, SDSN unit code, QHNS code
+    - unit of measurement
+    - items
+    - Reason for collection
+    - charges effective from
+    - declarant_name
+    - taxpayer_address
+    - total_amount/ grand_total
+    - total_amount_in_words
+    - attach
+    - other accounting documents
+    - original documents
+    - VAT
+    - VAT Amount
+    - amount
+    - sign
+    - Đã nhận đủ số tiền
+    - Tỷ giá ngoại tệ
+    - Số tiền quy đổi

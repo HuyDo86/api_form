@@ -1,0 +1,8 @@
+description: model gpt-4o
+value:
+  api_key: '2372332535'
+  base_url: https://api.openai.com/v1
+  model: gpt-4o
+  provider: openai
+labels: []
+resource_type: c_openai

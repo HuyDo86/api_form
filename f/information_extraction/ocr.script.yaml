@@ -1,0 +1,26 @@
+summary: ''
+description: ''
+lock: '!inline f/information_extraction/ocr.script.lock'
+kind: script
+schema:
+  $schema: https://json-schema.org/draft/2020-12/schema
+  type: object
+  properties:
+    file_content:
+      type: string
+      description: ''
+      contentEncoding: base64
+      default: null
+      originalType: bytes
+    media_type:
+      type: string
+      description: ''
+      default: image/jpeg
+      originalType: string
+    vlm_resource:
+      type: object
+      description: ''
+      default: <function call>
+      properties: {}
+  required:
+    - file_content

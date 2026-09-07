@@ -1,0 +1,8 @@
+description: model claude112b
+value:
+  api_key: '22332535'
+  base_url: https://api.anthropic.com
+  model: claude112b
+  provider: anthropic
+labels: []
+resource_type: c_anthropic

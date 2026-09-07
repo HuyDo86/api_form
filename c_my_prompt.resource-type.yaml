@@ -1,0 +1,51 @@
+description: ''
+format_extension: null
+is_fileset: false
+schema:
+  $schema: https://json-schema.org/draft/2020-12/schema
+  type: object
+  order:
+    - Role
+    - Goal
+    - Instruction
+    - Context
+    - Constraints
+    - Output
+  properties:
+    Constraints:
+      type: string
+      description: Những điều AI cần làm/ không được làm
+      default: ''
+      nullable: false
+    Context:
+      type: string
+      description: Bối cảnh/ Thông tin AI cần biết?
+      default: ''
+      nullable: false
+    Goal:
+      type: string
+      description: AI đóng vai trò gì?
+      default: ''
+      nullable: false
+    Instruction:
+      type: string
+      description: AI cần làm như thế nào?
+      default: ''
+      nullable: false
+    Output:
+      type: string
+      description: Muốn nhận kết quả như thế nào?
+      default: ''
+      nullable: false
+    Role:
+      type: string
+      description: AI cần đạt mục tiêu gì?
+      default: ''
+      nullable: false
+  required:
+    - Role
+    - Goal
+    - Instruction
+    - Context
+    - Constraints
+    - Output

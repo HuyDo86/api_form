@@ -1,0 +1,6 @@
+description: ''
+value:
+  api_key: $var:f/information_extraction/qwen
+  base_url: https://aiapi.fastwork.vn/vlm/v1
+  organization_id: ''
+resource_type: openai

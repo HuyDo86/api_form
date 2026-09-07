@@ -1,8 +1,0 @@
-description: model qwen
-value:
-  api_key: mbw-huytts-9c4d4ae824c46883b730f5126ac74d89
-  base_url: https://aiapi.fastwork.vn/vlm/v1
-  model: 5CD-AI/Vintern-3B-R-beta
-  provider: openai
-labels: []
-resource_type: c_openai

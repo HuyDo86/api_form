@@ -1,7 +1,33 @@
 name: demo
 error_handler: null
 git_sync:
-  repositories: []
+  repositories:
+    - exclude_types_override: []
+      git_repo_resource_path: $res:f/information_extraction/git_repository
+      group_by_folder: false
+      settings:
+        exclude_path: []
+        extra_include_path: []
+        include_path:
+          - f/**
+        include_type:
+          - script
+          - flow
+          - app
+          - folder
+          - workspacedependencies
+          - datatablemigration
+          - resourcetype
+          - resource
+          - variable
+          - secret
+          - schedule
+          - user
+          - group
+          - trigger
+          - settings
+          - key
+      use_individual_branch: false
 operator_settings:
   assets: true
   audit_logs: true

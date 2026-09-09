@@ -1,0 +1,7 @@
+description: ''
+value:
+  api_key: $var:f/api_phieuthu/qwen_vlm
+  base_url: https://aiapi.fastwork.vn/vlm/v1
+  model: 5CD-AI/Vintern-3B-R-beta
+  provider: openai
+resource_type: c_openai

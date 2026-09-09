@@ -7,10 +7,11 @@ schema:
   type: object
   properties:
     file_content:
-      type: string
+      type: object
       description: ''
       contentEncoding: base64
       default: null
+      format: resource-Any
       originalType: bytes
     model_path:
       type: string

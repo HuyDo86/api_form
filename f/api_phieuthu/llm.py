@@ -1,7 +1,8 @@
 import base64
 import os
 from typing import Dict, Any
-
+# requirements:
+# openai
 from openai import OpenAI
 
 

@@ -162,6 +162,8 @@ value:
     - Respond with one valid JSON object only. Do not include markdown, code
     fences, comments, explanations, confidence scores, or text outside the JSON
     object.
+
+    - Fields with null values ​​do not return any output.
   Context: >-
     - Document type: Phiếu thu used in Vietnamese accounting.
 

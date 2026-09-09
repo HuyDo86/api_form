@@ -1,0 +1,10 @@
+description: ''
+value:
+  anthropic_version: 2023-06-01
+  api_key: YOUR_ACTUAL_API_KEY
+  base_url: https://anthropic.com
+  model: claude-3-5-sonnet-20240620
+  provider: anthropic
+  temperature: 0.5
+labels: []
+resource_type: c_anthropic

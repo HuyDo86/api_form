@@ -1,3 +1,6 @@
+# requirements:
+# openai
+# wmill
 from typing import Dict, Any, Optional
 import re
 import wmill

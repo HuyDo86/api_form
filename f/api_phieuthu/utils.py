@@ -23,9 +23,18 @@ def extract_json(raw_text: str) -> dict:
     return data
 
 
-def clean_extracted_data(data: Any) -> Any:
+def clean_extracted_data(data: Any, drop_null: bool = True) -> Any:
+    """Recursively copy JSON data, omitting keys with None/null values if drop_null is True."""
     if isinstance(data, dict):
-        return {key: clean_extracted_data(value) for key, value in data.items()}
+        res = {}
+        for key, value in data.items():
+            if drop_null and value is None:
+                continue
+            cleaned = clean_extracted_data(value, drop_null=drop_null)
+            if drop_null and cleaned is None:
+                continue
+            res[key] = cleaned
+        return res
     if isinstance(data, list):
-        return [clean_extracted_data(item) for item in data]
+        return [clean_extracted_data(item, drop_null=drop_null) for item in data]
     return data

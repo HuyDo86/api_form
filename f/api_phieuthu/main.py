@@ -1,9 +1,9 @@
 from typing import Dict, Any, Optional
 
-from f.information_extraction.utils import extract_json, clean_extracted_data
-from f.information_extraction.prompt_builder import build_prompt
-from f.information_extraction.model_loader import get_model_config
-from f.information_extraction.llm import call_llm
+from f.api_phieuthu.utils import extract_json, clean_extracted_data
+from f.api_phieuthu.prompt_builder import build_prompt
+from f.api_phieuthu.model_loader import get_model_config
+from f.api_phieuthu.llm import call_llm
 
 
 def step_build_prompt(prompt_path: Optional[str] = None) -> str:

@@ -222,6 +222,8 @@ value:
 
     - "sign": array of strings; use [] when absent.
 
+    - Fields with null values ​​do not return any output.
+
     Use the exact template below and keep every key:
 
     {"amount": null, "attach": null, "book number": null, "charges effective

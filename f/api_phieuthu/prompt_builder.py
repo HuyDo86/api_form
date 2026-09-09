@@ -1,4 +1,5 @@
 import wmill
+
 from typing import Optional, Dict, Any
 
 DEFAULT_PROMPT_PATH = "f/information_extraction/prompt_phieu_thu"

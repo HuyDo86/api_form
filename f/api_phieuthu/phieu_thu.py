@@ -9,7 +9,7 @@ try:
         step_parse_and_clean,
     )
 except ModuleNotFoundError:
-    from main import (
+    from f.api_phieuthu.main import (
         step_build_prompt,
         step_load_model,
         step_extract,

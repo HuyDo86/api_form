@@ -9,6 +9,8 @@ schema:
     - api_key
     - base_url
     - provider
+    - temperature
+    - organization
   properties:
     api_key:
       type: string
@@ -23,7 +25,15 @@ schema:
       description: ''
       default: ''
       nullable: false
+    organization:
+      type: string
+      description: ''
+      default: ''
     provider:
+      type: string
+      description: ''
+      default: ''
+    temperature:
       type: string
       description: ''
       default: ''

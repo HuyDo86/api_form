@@ -1,7 +1,7 @@
 import wmill
 from typing import Dict, Any, Optional
 
-DEFAULT_MODEL_PATH = "f/information_extraction/qwen"
+DEFAULT_MODEL_PATH = "f/api_phieuthu/qwen_vlm"
 
 
 def get_model_config(model_path: Optional[str] = None) -> Dict[str, Any]:

@@ -9,7 +9,13 @@ schema:
     - api_key
     - base_url
     - provider
+    - temperature
+    - anthropic_version
   properties:
+    anthropic_version:
+      type: string
+      description: ''
+      default: ''
     api_key:
       type: string
       description: ''
@@ -24,6 +30,10 @@ schema:
       default: ''
       nullable: false
     provider:
+      type: string
+      description: ''
+      default: ''
+    temperature:
       type: string
       description: ''
       default: ''

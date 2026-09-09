@@ -3,7 +3,7 @@ locks:
   f/api_phieuthu/llm: 80c5fb39bb1652403dc97c428b0fce4ee7ea2f946f8e8a3d872da0bbf1887175
   f/api_phieuthu/main: b3f270be126bd079c2232640d944bdb5c96dd32232592195ca048b1843bc2811
   f/api_phieuthu/model_loader: 805c2e89fdf8f964bbdd6cb35d2dc5809f61e3628dbedaa0bbfdfd783befa94d
-  f/api_phieuthu/phieu_thu: 13c407679a25b944bdcc8bbc56465282def466777b74ab4defdca4fc72629704
+  f/api_phieuthu/phieu_thu: 627ac64f2ced92438c887f7bb8d0c2c0ec0df7bbe70a56096e48d7f8e99e398d
   f/api_phieuthu/prompt_builder: d5f426e2195edd6a7d9a53e22aa337ae8e4a1b6c8dc2f4500cd7525d923cc79f
   f/api_phieuthu/utils: 5c0d53faa060b4b7c210e7b8e026257bfb1a5739913e0c9dd915d1c891cd7031
   f/information_extraction/_lib/windmill_api: f9b346be57e209945775d542e352c3ec77d1d2532e1fa0eebe71e33e5e6b6c1d

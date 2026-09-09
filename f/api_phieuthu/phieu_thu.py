@@ -28,7 +28,7 @@ except ModuleNotFoundError:
             step_parse_and_clean,
         )
 
-DEFAULT_PROMPT_PATH = "f/api_phieuthu/prompt_phieu_thu"
+DEFAULT_PROMPT_PATH = "f/information_extraction/prompt_phieu_thu"
 DOC_TYPE = "phieu_thu"
 
 

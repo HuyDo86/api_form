@@ -8,6 +8,7 @@ schema:
     - model
     - api_key
     - base_url
+    - provider
   properties:
     api_key:
       type: string
@@ -22,6 +23,10 @@ schema:
       description: ''
       default: ''
       nullable: false
+    provider:
+      type: string
+      description: ''
+      default: ''
   required:
     - api_key
     - model

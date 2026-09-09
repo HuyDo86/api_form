@@ -1,9 +1,9 @@
 # requirements:
 # openai
 # wmill
+
 from typing import Dict, Any, Optional
 import re
-import wmill
 
 try:
     from f.api_phieuthu.main import (
@@ -13,14 +13,22 @@ try:
         step_parse_and_clean,
     )
 except ModuleNotFoundError:
-    from f.api_phieuthu.main import (
-        step_build_prompt,
-        step_load_model,
-        step_extract,
-        step_parse_and_clean,
-    )
+    try:
+        from f.api_phieuthu.main import (
+            step_build_prompt,
+            step_load_model,
+            step_extract,
+            step_parse_and_clean,
+        )
+    except ModuleNotFoundError:
+        from f.api_phieuthu.main import (
+            step_build_prompt,
+            step_load_model,
+            step_extract,
+            step_parse_and_clean,
+        )
 
-DEFAULT_PROMPT_PATH = "f/information_extraction/prompt_phieu_thu"
+DEFAULT_PROMPT_PATH = "f/api_phieuthu/prompt_phieu_thu"
 DOC_TYPE = "phieu_thu"
 
 
@@ -68,7 +76,7 @@ def _process_phieu_thu_fields(data: Dict[str, Any], ocr_text: str = "") -> Dict[
         if signs_found:
             data["sign"] = signs_found
 
-    return data
+    return {k: v for k, v in data.items() if v is not None}
 
 
 def process_phieu_thu(

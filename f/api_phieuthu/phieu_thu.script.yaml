@@ -1,0 +1,26 @@
+summary: ''
+description: ''
+lock: '!inline f/api_phieuthu/phieu_thu.script.lock'
+kind: script
+schema:
+  $schema: https://json-schema.org/draft/2020-12/schema
+  type: object
+  properties:
+    file_content:
+      type: string
+      description: ''
+      contentEncoding: base64
+      default: null
+      originalType: bytes
+    model_path:
+      type: string
+      description: ''
+      default: null
+      originalType: string
+    prompt_path:
+      type: string
+      description: ''
+      default: null
+      originalType: string
+  required:
+    - file_content

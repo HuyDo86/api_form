@@ -1,7 +1,7 @@
 version: v2
 locks:
   f/api_phieuthu/llm: 80c5fb39bb1652403dc97c428b0fce4ee7ea2f946f8e8a3d872da0bbf1887175
-  f/api_phieuthu/main: 5de284155db25db7eedc068f2349670cd606d2cecc529f61392aefb9595d67b0
+  f/api_phieuthu/main: b3f270be126bd079c2232640d944bdb5c96dd32232592195ca048b1843bc2811
   f/api_phieuthu/model_loader: 805c2e89fdf8f964bbdd6cb35d2dc5809f61e3628dbedaa0bbfdfd783befa94d
   f/api_phieuthu/phieu_thu: a5a5079150ab4c893a9303402e8c276c6fbee74537957bf66af5bfdbd3e22235
   f/api_phieuthu/prompt_builder: d5f426e2195edd6a7d9a53e22aa337ae8e4a1b6c8dc2f4500cd7525d923cc79f

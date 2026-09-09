@@ -1,3 +1,6 @@
+# requirements:
+# openai
+# wmill
 from typing import Dict, Any, Optional
 
 from f.api_phieuthu.utils import extract_json, clean_extracted_data

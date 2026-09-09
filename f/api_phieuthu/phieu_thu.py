@@ -97,7 +97,7 @@ def process_phieu_thu(
 
 
 def main(
-    file_content: Any,
+    file_content: bytes,
     model_path: Optional[str] = None,
     prompt_path: Optional[str] = None,
 ) -> Dict[str, Any]:

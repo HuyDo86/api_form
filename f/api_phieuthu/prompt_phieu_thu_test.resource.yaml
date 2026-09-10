@@ -1,0 +1,16 @@
+description: Prompt Trích Xuất Phiếu Thu
+value:
+  Constraints: Never fabricate. Missing scalar -> null, missing items/sign -> [].
+    Output valid JSON only...
+  Context: 'Document type: Phieu thu used in Vietnamese accounting. Input is
+    original image read directly by VLM...'
+  Goal: Extract the receipt voucher (Phiếu thu) fields directly from the input
+    image into a JSON object matching the exact keys below.
+  Instruction: 'Extract 30 fields: amount, attach, book number,date,
+    declarant_name, total_amount/grand_total, sign, items...'
+  Output: '{"amount": null, "attach": null, "book number":null, "date": null,
+    "total_amount/grand_total": null}'
+  Role: You are an expert in accounting, finance, and document processing for
+    businesses in Vietnam.
+labels: []
+resource_type: c_my_prompt
